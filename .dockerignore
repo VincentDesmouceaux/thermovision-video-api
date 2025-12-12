@@ -1,0 +1,17 @@
+.git
+__pycache__/
+venv/
+.venv/
+.DS_Store
+outputs/
+bin/
+obj/
+.build/
+node_modules/
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.zip
+*.tar.gz
+data

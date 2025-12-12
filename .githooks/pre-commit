@@ -1,0 +1,22 @@
+
+#!/bin/bash
+# Block commits that stage video/image/raw files matching common extensions
+# This hook checks staged paths and aborts the commit if any media files are present.
+
+# Safely check staged files without exiting on grep non-match
+staged=$(git diff --cached --name-only)
+
+if [ -z "$staged" ]; then
+  exit 0
+fi
+
+if echo "$staged" | grep -qiE '\.(mp4|mov|avi|mkv|wmv|flv|webm|mpg|mpeg|png|jpe?g|gif|tif|tiff|heic|webp|cr2|nef|arw)$'; then
+  echo "ERROR: Commit contains media files (video/image/raw)."
+  echo "Please remove them from the commit or update .gitignore."
+  echo
+  echo "Staged media files:"
+  echo "$staged" | grep -iE '\.(mp4|mov|avi|mkv|wmv|flv|webm|mpg|mpeg|png|jpe?g|gif|tif|tiff|heic|webp|cr2|nef|arw)$'
+  exit 1
+fi
+
+exit 0

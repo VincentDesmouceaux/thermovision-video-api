@@ -1,0 +1,44 @@
+{
+    "configurations": [
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:video}",
+            "name": "Debug ThermalHeatmap",
+            "preLaunchTask": "swift: Build Debug ThermalHeatmap",
+            "target": "ThermalHeatmap",
+            "configuration": "debug"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:video}",
+            "name": "Release ThermalHeatmap",
+            "preLaunchTask": "swift: Build Release ThermalHeatmap",
+            "target": "ThermalHeatmap",
+            "configuration": "release"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:video}",
+            "name": "Debug ThermalVideo",
+            "preLaunchTask": "swift: Build Debug ThermalVideo",
+            "target": "ThermalVideo",
+            "configuration": "debug"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:video}",
+            "name": "Release ThermalVideo",
+            "preLaunchTask": "swift: Build Release ThermalVideo",
+            "target": "ThermalVideo",
+            "configuration": "release"
+        }
+    ]
+}

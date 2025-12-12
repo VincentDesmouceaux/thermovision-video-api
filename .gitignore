@@ -1,0 +1,58 @@
+# macOS
+.DS_Store
+
+# Env / logs
+.env
+*.log
+*.bak
+
+# Node
+node_modules/
+
+# Python
+
+
+
+.venv/
+__pycache__/
+*.pyc
+
+# Swift / SPM
+.build/
+.swiftpm/
+DerivedData/
+
+# .NET build artifacts
+bin/
+obj/
+*.dll
+*.pdb
+
+# Project generated data / outputs
+data/
+outputs/
+assets/temp/
+
+# Git accident backups
+.git_backup_*/
+
+# Media (video)
+*.[mM][pP]4
+*.[mM][oO][vV]
+*.[aA][vV][iI]
+*.[mM][kK][vV]
+*.[wW][mM][vV]
+*.[fF][lL][vV]
+*.[wW][eE][bB][mM]
+*.[mM][pP][gG]
+*.[mM][pP][eE][gG]
+
+# Images
+*.[pP][nN][gG]
+*.[jJ][pP][gG]
+*.[jJ][pP][eE][gG]
+*.[gG][iI][fF]
+*.[tT][iI][fF]
+*.[tT][iI][fF][fF]
+*.[hH][eE][iI][cC]
+*.[wW][eE][bB][pP]

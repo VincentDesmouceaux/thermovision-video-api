@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Thermo Uploader</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <main>
+    <h1>Thermo Uploader</h1>
+    <form id="uploadForm">
+      <input type="file" id="fileInput" name="file" accept="video/*" />
+      <button type="submit">Upload</button>
+    </form>
+
+    <div id="status"></div>
+    <pre id="result" style="white-space:pre-wrap"></pre>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>

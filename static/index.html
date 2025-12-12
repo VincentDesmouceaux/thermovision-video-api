@@ -1,0 +1,650 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>ThermoVision – Heatmap Processor</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #050816;
+      color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      min-height: 100vh;
+      align-items: center;
+      justify-content: center;
+    }
+    .shell {
+      width: 100%;
+      max-width: 960px;
+      padding: 24px;
+      box-sizing: border-box;
+    }
+    .card {
+      background: radial-gradient(circle at top, #111827 0, #020617 55%);
+      border-radius: 18px;
+      padding: 24px 24px 18px;
+      box-shadow: 0 18px 60px rgba(0,0,0,0.65);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+    }
+    h1 {
+      margin-top: 0;
+      font-size: 1.6rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #e5e7eb;
+    }
+    .subtitle {
+      font-size: 0.9rem;
+      color: #9ca3af;
+      margin-bottom: 18px;
+    }
+    .upload-zone {
+      border: 1px dashed rgba(148, 163, 184, 0.7);
+      border-radius: 14px;
+      padding: 18px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.16s ease-out;
+      background: linear-gradient(145deg, rgba(15,23,42,0.88), rgba(15,23,42,0.96));
+      margin-bottom: 8px;
+    }
+    .upload-zone.dragover {
+      border-color: #38bdf8;
+      background: radial-gradient(circle at top, rgba(8,47,73,0.9), rgba(15,23,42,0.98));
+      transform: translateY(-1px);
+      box-shadow: 0 14px 45px rgba(56,189,248,0.25);
+    }
+    .upload-zone span {
+      display: block;
+      font-size: 0.95rem;
+      color: #e5e7eb;
+    }
+    .upload-zone small {
+      display: block;
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 4px;
+    }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 12px;
+    }
+    .col {
+      flex: 1 1 220px;
+      min-width: 0;
+    }
+    label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.11em;
+      color: #9ca3af;
+      margin-bottom: 4px;
+      display: block;
+    }
+    .help {
+      font-size: 0.72rem;
+      color: #6b7280;
+      line-height: 1.25;
+      margin: 4px 0 0;
+    }
+    input[type="number"],
+    select {
+      width: 100%;
+      box-sizing: border-box;
+      border-radius: 10px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      padding: 6px 8px;
+      background: rgba(15,23,42,0.95);
+      color: #e5e7eb;
+      font-size: 0.9rem;
+      outline: none;
+    }
+    input[type="number"]:focus,
+    select:focus {
+      border-color: #38bdf8;
+      box-shadow: 0 0 0 1px rgba(56,189,248,0.5);
+    }
+    .actions {
+      margin-top: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    button {
+      border-radius: 999px;
+      border: none;
+      padding: 9px 18px;
+      background: linear-gradient(135deg, #38bdf8, #818cf8);
+      color: white;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 12px 30px rgba(37,99,235,0.55);
+    }
+    button:disabled {
+      opacity: 0.6;
+      cursor: default;
+      box-shadow: none;
+    }
+    .status {
+      font-size: 0.85rem;
+      color: #9ca3af;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .status strong {
+      color: #e5e7eb;
+    }
+    .logs {
+      margin-top: 14px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: radial-gradient(circle at top left, rgba(15,23,42,0.98), rgba(3,7,18,0.98));
+      font-family: ui-monospace, Menlo, Monaco, "SF Mono", monospace;
+      font-size: 0.75rem;
+      max-height: 260px;
+      overflow: auto;
+      border: 1px solid rgba(31,41,55,0.9);
+      color: #9ca3af;
+      white-space: pre-wrap;
+    }
+    .tagline {
+      margin-top: 8px;
+      font-size: 0.75rem;
+      color: #6b7280;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.7rem;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: rgba(15,118,110,0.15);
+      border: 1px solid rgba(45,212,191,0.4);
+      color: #a5f3fc;
+    }
+    a.download-link {
+      font-size: 0.85rem;
+      color: #38bdf8;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    a.download-link:hover {
+      text-decoration: underline;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(75,85,99,0.65);
+      font-size: 0.7rem;
+      color: #9ca3af;
+    }
+
+    /* Sliders + previews */
+    .slider-row {
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .slider-row input[type="range"] {
+      flex: 1;
+    }
+    .slider-value {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      min-width: 40px;
+      text-align: right;
+    }
+    .slider-preview {
+      width: 80px;
+      height: 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.65);
+      background: #020617;
+      overflow: hidden;
+    }
+    .slider-fill {
+      width: 0%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #0ea5e9, #f97316);
+      transition: width 0.15s ease-out;
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="card">
+      <h1>ThermoVision · Continuous Heatmap</h1>
+      <div class="subtitle">
+        Drop a short video, we overlay a pseudo-thermal heatmap frame-by-frame and send you back a downloadable clip.
+      </div>
+
+      <div id="drop-zone" class="upload-zone">
+        <span id="drop-label">Drop your .mp4 / .mov here or click to browse</span>
+        <small>Max a few hundred MB · Processing starts after upload completes</small>
+        <input type="file" id="file-input" accept="video/mp4,video/quicktime" style="display:none" />
+      </div>
+
+      <div class="row">
+        <!-- pLow -->
+        <div class="col">
+          <label for="pLow">Percentile low (pLow)</label>
+          <div class="slider-row">
+            <input
+              type="range"
+              id="pLow"
+              min="0.60"
+              max="0.90"
+              step="0.01"
+              value="0.80"
+            />
+            <span id="pLow-value" class="slider-value">0.80</span>
+            <div class="slider-preview">
+              <div id="pLow-fill" class="slider-fill"></div>
+            </div>
+          </div>
+          <div class="help">
+            Lower bound of intensity normalisation. Higher → on ignore plus de zones sombres (moins de bruit).
+          </div>
+        </div>
+
+        <!-- pHigh -->
+        <div class="col">
+          <label for="pHigh">Percentile high (pHigh)</label>
+          <div class="slider-row">
+            <input
+              type="range"
+              id="pHigh"
+              min="0.85"
+              max="0.99"
+              step="0.01"
+              value="0.98"
+            />
+            <span id="pHigh-value" class="slider-value">0.98</span>
+            <div class="slider-preview">
+              <div id="pHigh-fill" class="slider-fill"></div>
+            </div>
+          </div>
+          <div class="help">
+            Upper bound of intensity normalisation. Lower → heatmap plus dense, moins de hautes lumières cramées.
+          </div>
+        </div>
+
+        <!-- gamma -->
+        <div class="col">
+          <label for="gamma">Gamma</label>
+          <div class="slider-row">
+            <input
+              type="range"
+              id="gamma"
+              min="0.8"
+              max="2.0"
+              step="0.1"
+              value="1.2"
+            />
+            <span id="gamma-value" class="slider-value">1.2</span>
+            <div class="slider-preview">
+              <div id="gamma-fill" class="slider-fill"></div>
+            </div>
+          </div>
+          <div class="help">
+            >1 → renforce les zones déjà chaudes. &lt;1 → rendu plus doux / étalé.
+          </div>
+        </div>
+
+        <!-- alpha -->
+        <div class="col">
+          <label for="alpha">Alpha</label>
+          <div class="slider-row">
+            <input
+              type="range"
+              id="alpha"
+              min="0.20"
+              max="1.0"
+              step="0.05"
+              value="0.60"
+            />
+            <span id="alpha-value" class="slider-value">0.60</span>
+            <div class="slider-preview">
+              <div id="alpha-fill" class="slider-fill"></div>
+            </div>
+          </div>
+          <div class="help">
+            Overlay opacity. 0 → vidéo d’origine, 1 → heatmap pure.
+          </div>
+        </div>
+
+        <!-- stat (meta only) -->
+        <div class="col">
+          <label for="stat">Stat</label>
+          <select id="stat">
+            <option value="avg" selected>avg (per-frame dynamic)</option>
+            <option value="max">max (meta only)</option>
+          </select>
+          <div class="help">
+            En v2.5, l’overlay est toujours dynamique. Ce paramètre ne sert qu’au résumé JSON.
+          </div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="run-btn">
+          <span>Run Thermal Pass</span>
+        </button>
+
+        <div class="status" id="status">
+          <span class="chip">
+            <span>Engine</span> <span>Python · OpenCV · NumPy</span>
+          </span>
+          <span id="status-text"><strong>Status</strong> · Idle</span>
+        </div>
+      </div>
+
+      <div class="logs" id="logs">
+        Ready. Drag-and-drop a video, tweak the parameters, then hit “Run Thermal Pass”.
+        Live logs from the processor will appear here: FPS, duration, percentile bands, etc.
+      </div>
+
+      <div class="tagline">
+        <span id="download-wrapper" style="display:none">
+          <a id="download-link" class="download-link" href="#" download="thermal_output.mp4">
+            ⬇ Download processed video
+          </a>
+        </span>
+        <span style="float:right; opacity:0.75;">
+          <span class="pill">Continuous pseudo-thermal overlay · no GPU required</span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const dropZone = document.getElementById('drop-zone');
+    const fileInput = document.getElementById('file-input');
+    const runBtn = document.getElementById('run-btn');
+    const logsEl = document.getElementById('logs');
+    const downloadWrapper = document.getElementById('download-wrapper');
+    const downloadLink = document.getElementById('download-link');
+    const statusTextEl = document.getElementById('status-text');
+
+    let selectedFile = null;
+    let eventSource = null;
+    let pollTimer = null;
+    let currentJobId = null;
+
+    function logLine(text) {
+      logsEl.textContent += '\\n' + text;
+      logsEl.scrollTop = logsEl.scrollHeight;
+    }
+
+    function setStatus(text) {
+      statusTextEl.innerHTML = '<strong>Status</strong> · ' + text;
+    }
+
+    function clearPoll() {
+      if (pollTimer) {
+        clearInterval(pollTimer);
+        pollTimer = null;
+      }
+    }
+
+    function resetUI() {
+      if (eventSource) {
+        eventSource.close();
+        eventSource = null;
+      }
+      clearPoll();
+      currentJobId = null;
+      downloadWrapper.style.display = 'none';
+      downloadLink.href = '#';
+      setStatus('Idle');
+    }
+
+    // Drag & drop
+    dropZone.addEventListener('click', () => fileInput.click());
+
+    dropZone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      dropZone.classList.add('dragover');
+    });
+    dropZone.addEventListener('dragleave', (e) => {
+      e.preventDefault();
+      dropZone.classList.remove('dragover');
+    });
+    dropZone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      dropZone.classList.remove('dragover');
+      if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+        selectedFile = e.dataTransfer.files[0];
+        document.getElementById('drop-label').textContent =
+          'Selected: ' + selectedFile.name + ' (' + Math.round(selectedFile.size / 1024 / 1024) + ' MB)';
+      }
+    });
+
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files && e.target.files[0]) {
+        selectedFile = e.target.files[0];
+        document.getElementById('drop-label').textContent =
+          'Selected: ' + selectedFile.name + ' (' + Math.round(selectedFile.size / 1024 / 1024) + ' MB)';
+      }
+    });
+
+    async function startJob() {
+      if (!selectedFile) {
+        alert('Please select a video first.');
+        return;
+      }
+
+      resetUI();
+      logsEl.textContent = 'Uploading video and starting thermal processor...';
+      setStatus('Uploading…');
+
+      const fd = new FormData();
+      fd.append('video', selectedFile);
+      fd.append('pLow', document.getElementById('pLow').value || '0.80');
+      fd.append('pHigh', document.getElementById('pHigh').value || '0.98');
+      fd.append('gamma', document.getElementById('gamma').value || '1.2');
+      fd.append('alpha', document.getElementById('alpha').value || '0.6');
+      fd.append('stat', document.getElementById('stat').value || 'avg');
+
+      runBtn.disabled = true;
+
+      try {
+        const res = await fetch('/api/upload', {
+          method: 'POST',
+          body: fd,
+        });
+
+        if (!res.ok) {
+          const errText = await res.text();
+          logsEl.textContent = 'Upload failed: ' + errText;
+          setStatus('Error during upload');
+          runBtn.disabled = false;
+          return;
+        }
+
+        const data = await res.json();
+        const jobId = data.jobId;
+        currentJobId = jobId;
+
+        setStatus('Processing… Job ' + jobId);
+        logLine('[ui] job ' + jobId + ' created, streaming logs…');
+
+        attachLogStream(jobId);
+        pollStatus(jobId);
+
+      } catch (e) {
+        console.error(e);
+        logsEl.textContent = 'Unexpected error: ' + e;
+        setStatus('Unexpected error');
+        runBtn.disabled = false;
+      }
+    }
+
+    function attachLogStream(jobId) {
+      if (eventSource) {
+        eventSource.close();
+      }
+
+      eventSource = new EventSource('/api/logs/' + jobId);
+
+      eventSource.onmessage = (event) => {
+        if (event.data) {
+          logLine(event.data);
+        }
+      };
+
+      eventSource.addEventListener('done', (event) => {
+        const finalState = event.data;
+        logLine('[ui] processor finished with status: ' + finalState);
+
+        clearPoll();
+
+        if (finalState === 'done') {
+          setStatus('Done ✓');
+          downloadWrapper.style.display = 'inline';
+          downloadLink.href = '/api/download/' + jobId;
+          logLine('[ui] video ready – use the button below to download.');
+        } else {
+          setStatus('Error');
+          logLine('[ui] job failed – check logs above.');
+        }
+
+        if (eventSource) {
+          eventSource.close();
+          eventSource = null;
+        }
+
+        runBtn.disabled = false;
+      });
+
+      eventSource.onerror = () => {
+        if (eventSource) {
+          eventSource.close();
+          eventSource = null;
+        }
+      };
+    }
+
+    async function pollStatus(jobId) {
+      clearPoll();
+
+      pollTimer = setInterval(async () => {
+        try {
+          const res = await fetch('/api/status/' + jobId);
+
+          if (!res.ok) {
+            return;
+          }
+
+          const data = await res.json();
+
+          if (data.status === 'queued' || data.status === 'running') {
+            setStatus(data.status + '…');
+            return;
+          }
+
+          if (data.status === 'done') {
+            clearPoll();
+            setStatus('Done ✓');
+            downloadWrapper.style.display = 'inline';
+            downloadLink.href = '/api/download/' + jobId;
+            logLine('[ui] video ready – use the button below to download.');
+            runBtn.disabled = false;
+          } else if (data.status === 'error') {
+            clearPoll();
+            setStatus('Error');
+            logLine('[ui] job failed: ' + (data.error || 'unknown error'));
+            runBtn.disabled = false;
+          }
+
+        } catch (e) {
+          logLine('[ui] status poll warning: ' + e);
+        }
+      }, 1500);
+    }
+
+    // Sliders with explicit "intensity" bars
+    function setupSlider(id, valueId, fillId, formatFn, intensityFn) {
+      const input = document.getElementById(id);
+      const valueEl = document.getElementById(valueId);
+      const fillEl = document.getElementById(fillId);
+
+      const update = () => {
+        const v = parseFloat(input.value);
+        if (formatFn) {
+          valueEl.textContent = formatFn(v);
+        } else {
+          valueEl.textContent = v.toFixed(2);
+        }
+
+        let frac = intensityFn ? intensityFn(v) : 0;
+        if (isNaN(frac)) frac = 0;
+        frac = Math.max(0, Math.min(1, frac));
+        fillEl.style.width = (frac * 100).toFixed(0) + '%';
+      };
+
+      input.addEventListener('input', update);
+      update();
+    }
+
+    // pLow : intensité = combien on coupe les basses valeurs (0 = peu, 1 = beaucoup)
+    setupSlider(
+      'pLow',
+      'pLow-value',
+      'pLow-fill',
+      (v) => v.toFixed(2),
+      (v) => (v - 0.60) / (0.90 - 0.60)
+    );
+
+    // pHigh : intensité = niveau de compression des hautes énergies
+    setupSlider(
+      'pHigh',
+      'pHigh-value',
+      'pHigh-fill',
+      (v) => v.toFixed(2),
+      (v) => 1 - (v - 0.85) / (0.99 - 0.85) // plus pHigh est bas, plus la barre se remplit
+    );
+
+    // gamma : intensité = aggression sur les zones chaudes
+    setupSlider(
+      'gamma',
+      'gamma-value',
+      'gamma-fill',
+      (v) => v.toFixed(1),
+      (v) => (v - 0.8) / (2.0 - 0.8)
+    );
+
+    // alpha : intensité = dominance du heatmap vs vidéo
+    setupSlider(
+      'alpha',
+      'alpha-value',
+      'alpha-fill',
+      (v) => v.toFixed(2),
+      (v) => (v - 0.20) / (1.0 - 0.20)
+    );
+
+    runBtn.addEventListener('click', startJob);
+  </script>
+</body>
+</html>

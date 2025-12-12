@@ -1,0 +1,13 @@
+{
+  "name": "thermal-video-service",
+  "version": "1.0.0",
+  "description": "Upload video → return thermal-analysed video",
+  "main": "processor-server.js",
+  "scripts": {
+    "start": "node processor-server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "multer": "^1.4.5-lts.1"
+  }
+}
