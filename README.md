@@ -162,5 +162,3 @@ Pick your poison ☠️✅
 
 * MIT
 * Apache-2.0
-
-Tell me which one and I’ll generate the `LICENSE` file.
