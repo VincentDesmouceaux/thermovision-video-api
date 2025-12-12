@@ -5,7 +5,8 @@ import threading
 import time
 import uuid
 import subprocess
-from typing import Dict, Any, List
+import math
+from typing import Dict, Any, List, Optional
 
 from flask import (
     Flask,
@@ -39,13 +40,23 @@ JOBS_LOCK = threading.Lock()
 
 def _as_float(value, default: float) -> float:
     try:
-        return float(value)
+        v = float(value)
+        if not math.isfinite(v):
+            return default
+        return v
     except Exception:
         return default
 
 
 def _clamp(x: float, lo: float, hi: float) -> float:
     return max(lo, min(hi, x))
+
+
+def _as_choice(value: Optional[str], allowed: List[str], default: str) -> str:
+    if not value:
+        return default
+    v = str(value).strip().lower()
+    return v if v in allowed else default
 
 
 def run_job(job_id: str) -> None:
@@ -175,18 +186,27 @@ def upload():
 
     f.save(input_path)
 
-    # paramètres optionnels (validation légère mais non bloquante)
-    p_low = _clamp(_as_float(request.form.get("pLow", "0.80"), 0.80), 0.0, 1.0)
+    # -----------------------------
+    # ✅ Params UI (FormData => request.form)
+    # -----------------------------
+    # pLow/pHigh doivent rester < 1.0 (le processor clamp aussi, mais on le fait propre ici)
+    p_low = _clamp(_as_float(request.form.get(
+        "pLow", "0.80"), 0.80), 0.0, 0.999)
     p_high = _clamp(_as_float(request.form.get(
-        "pHigh", "0.98"), 0.98), 0.0, 1.0)
-    if p_high < p_low:
-        p_high = p_low
+        "pHigh", "0.98"), 0.98), 0.0, 0.999)
 
-    gamma = _as_float(request.form.get("gamma", "1.2"), 1.2)
+    # garantir pHigh > pLow (sinon l’overlay devient quasi identique / instable)
+    if p_high <= p_low:
+        p_high = min(p_low + 0.01, 0.999)
+
+    # gamma: bornes raisonnables (évite NaN / extrêmes)
+    gamma = _clamp(_as_float(request.form.get("gamma", "1.2"), 1.2), 0.1, 6.0)
+
+    # alpha: [0..1]
     alpha = _clamp(_as_float(request.form.get("alpha", "0.6"), 0.6), 0.0, 1.0)
 
-    # IMPORTANT: on ne whitelist PAS stat pour éviter de casser thermal_processor
-    stat = request.form.get("stat", "avg")
+    # stat: ✅ whitelist (dans ton thermal_processor c’est meta-only, mais ok)
+    stat = _as_choice(request.form.get("stat", "avg"), ["avg", "max"], "avg")
 
     cli_args: List[str] = [
         "--pLow", str(p_low),
@@ -202,7 +222,9 @@ def upload():
             "status": "queued",
             "input_path": input_path,
             "output_path": output_path,
-            "log": [],
+            "log": [
+                f"[api] params pLow={p_low:.2f} pHigh={p_high:.2f} gamma={gamma:.2f} alpha={alpha:.2f} stat={stat}"
+            ],
             "error": None,
             "cli_args": cli_args,
             "created_at": time.time(),
@@ -263,6 +285,7 @@ def logs(job_id: str):
     headers = {
         "Cache-Control": "no-cache",
         "X-Accel-Buffering": "no",
+        "Connection": "keep-alive",
     }
     return Response(
         sse_log_stream(job_id),
