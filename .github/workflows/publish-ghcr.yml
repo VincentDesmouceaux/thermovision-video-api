@@ -29,6 +29,11 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      # ✅ FIX: GHCR requires lowercase repo/owner
+      - name: Lowercase owner for GHCR
+        id: vars
+        run: echo "OWNER_LC=${GITHUB_REPOSITORY_OWNER,,}" >> $GITHUB_OUTPUT
+
       - name: Build and push image
         uses: docker/build-push-action@v4
         with:
@@ -37,8 +42,8 @@ jobs:
           push: true
           platforms: linux/amd64,linux/arm64
           tags: |
-            ghcr.io/${{ github.repository_owner }}/thermo-uploader:latest
-            ghcr.io/${{ github.repository_owner }}/thermo-uploader:${{ github.sha }}
+            ghcr.io/${{ steps.vars.outputs.OWNER_LC }}/thermo-uploader:latest
+            ghcr.io/${{ steps.vars.outputs.OWNER_LC }}/thermo-uploader:${{ github.sha }}
 
       - name: Output image name
-        run: echo "image=ghcr.io/${{ github.repository_owner }}/thermo-uploader:latest" >> $GITHUB_OUTPUT
+        run: echo "image=ghcr.io/${{ steps.vars.outputs.OWNER_LC }}/thermo-uploader:latest" >> $GITHUB_OUTPUT
