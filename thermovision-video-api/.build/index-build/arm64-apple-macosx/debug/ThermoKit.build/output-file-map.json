@@ -1,0 +1,47 @@
+{
+  "": {
+    "swift-dependencies": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/master.swiftdeps"
+  },
+  "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/src/ThermoKit/AVUtils.swift": {
+    "dependencies": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/AVUtils.d",
+    "object": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/AVUtils.swift.o",
+    "swiftmodule": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/AVUtils~partial.swiftmodule",
+    "swift-dependencies": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/AVUtils.swiftdeps",
+    "diagnostics": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/AVUtils.dia"
+  },
+  "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/src/ThermoKit/Debug.swift": {
+    "dependencies": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/Debug.d",
+    "object": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/Debug.swift.o",
+    "swiftmodule": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/Debug~partial.swiftmodule",
+    "swift-dependencies": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/Debug.swiftdeps",
+    "diagnostics": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/Debug.dia"
+  },
+  "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/src/ThermoKit/Hotspot.swift": {
+    "dependencies": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/Hotspot.d",
+    "object": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/Hotspot.swift.o",
+    "swiftmodule": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/Hotspot~partial.swiftmodule",
+    "swift-dependencies": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/Hotspot.swiftdeps",
+    "diagnostics": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/Hotspot.dia"
+  },
+  "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/src/ThermoKit/OverlayColor.swift": {
+    "dependencies": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/OverlayColor.d",
+    "object": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/OverlayColor.swift.o",
+    "swiftmodule": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/OverlayColor~partial.swiftmodule",
+    "swift-dependencies": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/OverlayColor.swiftdeps",
+    "diagnostics": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/OverlayColor.dia"
+  },
+  "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/src/ThermoKit/ThermalGPU.swift": {
+    "dependencies": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/ThermalGPU.d",
+    "object": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/ThermalGPU.swift.o",
+    "swiftmodule": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/ThermalGPU~partial.swiftmodule",
+    "swift-dependencies": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/ThermalGPU.swiftdeps",
+    "diagnostics": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/ThermalGPU.dia"
+  },
+  "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/src/ThermoKit/ThermoKit.swift": {
+    "dependencies": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/ThermoKit.d",
+    "object": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/ThermoKit.swift.o",
+    "swiftmodule": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/ThermoKit~partial.swiftmodule",
+    "swift-dependencies": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/ThermoKit.swiftdeps",
+    "diagnostics": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/ThermoKit.dia"
+  }
+}

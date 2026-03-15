@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/vincentdesmouceaux/dev/thermovision-video-api/VideoDeepProbe.csproj": {}
+    "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/VideoDeepProbe.csproj": {}
   },
   "projects": {
-    "/Users/vincentdesmouceaux/dev/thermovision-video-api/VideoDeepProbe.csproj": {
+    "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/VideoDeepProbe.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/vincentdesmouceaux/dev/thermovision-video-api/VideoDeepProbe.csproj",
+        "projectUniqueName": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/VideoDeepProbe.csproj",
         "projectName": "VideoDeepProbe",
-        "projectPath": "/Users/vincentdesmouceaux/dev/thermovision-video-api/VideoDeepProbe.csproj",
+        "projectPath": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/VideoDeepProbe.csproj",
         "packagesPath": "/Users/vincentdesmouceaux/.nuget/packages/",
-        "outputPath": "/Users/vincentdesmouceaux/dev/thermovision-video-api/obj/",
+        "outputPath": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/vincentdesmouceaux/.nuget/NuGet/NuGet.Config"

@@ -1,0 +1,686 @@
+{
+  "builtTestProducts" : [
+
+  ],
+  "copyCommands" : {
+
+  },
+  "explicitTargetDependencyImportCheckingMode" : {
+    "none" : {
+
+    }
+  },
+  "generatedSourceTargetSet" : [
+
+  ],
+  "pluginDescriptions" : [
+
+  ],
+  "swiftCommands" : {
+    "C.ThermalHeatmapMain-arm64-apple-macosx26.0-debug.module" : {
+      "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "fileList" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermalHeatmapMain.build/sources",
+      "importPath" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/src/ThermalHeatmapMain/main.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/Modules/ThermoKit.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermalHeatmapMain.build/sources"
+        }
+      ],
+      "isLibrary" : false,
+      "moduleName" : "ThermalHeatmapMain",
+      "moduleOutputPath" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/Modules/ThermalHeatmapMain.swiftmodule",
+      "objects" : [
+        "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermalHeatmapMain.build/main.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx12.0",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-Onone",
+        "-enable-testing",
+        "-j16",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-Xfrontend",
+        "-entry-point-function-name",
+        "-Xfrontend",
+        "ThermalHeatmapMain_main",
+        "-parse-as-library",
+        "-swift-version",
+        "6",
+        "-Xfrontend",
+        "-experimental-lazy-typecheck",
+        "-Xfrontend",
+        "-experimental-skip-all-function-bodies",
+        "-Xfrontend",
+        "-experimental-allow-module-with-compiler-errors",
+        "-Xfrontend",
+        "-empty-abi-descriptor",
+        "-plugin-path",
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+        "-I",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "thermovision_video_api"
+      ],
+      "outputFileMapPath" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermalHeatmapMain.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/Modules/ThermalHeatmapMain.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : true,
+      "sources" : [
+        "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/src/ThermalHeatmapMain/main.swift"
+      ],
+      "tempsPath" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermalHeatmapMain.build",
+      "wholeModuleOptimization" : false
+    },
+    "C.ThermalVideoMain-arm64-apple-macosx26.0-debug.module" : {
+      "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "fileList" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermalVideoMain.build/sources",
+      "importPath" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/src/ThermalVideoMain/main.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/Modules/ThermoKit.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermalVideoMain.build/sources"
+        }
+      ],
+      "isLibrary" : false,
+      "moduleName" : "ThermalVideoMain",
+      "moduleOutputPath" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/Modules/ThermalVideoMain.swiftmodule",
+      "objects" : [
+        "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermalVideoMain.build/main.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx12.0",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-Onone",
+        "-enable-testing",
+        "-j16",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-Xfrontend",
+        "-entry-point-function-name",
+        "-Xfrontend",
+        "ThermalVideoMain_main",
+        "-swift-version",
+        "6",
+        "-Xfrontend",
+        "-experimental-lazy-typecheck",
+        "-Xfrontend",
+        "-experimental-skip-all-function-bodies",
+        "-Xfrontend",
+        "-experimental-allow-module-with-compiler-errors",
+        "-Xfrontend",
+        "-empty-abi-descriptor",
+        "-plugin-path",
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+        "-I",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "thermovision_video_api"
+      ],
+      "outputFileMapPath" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermalVideoMain.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/Modules/ThermalVideoMain.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : true,
+      "sources" : [
+        "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/src/ThermalVideoMain/main.swift"
+      ],
+      "tempsPath" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermalVideoMain.build",
+      "wholeModuleOptimization" : false
+    },
+    "C.ThermoKit-arm64-apple-macosx26.0-debug.module" : {
+      "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "fileList" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/sources",
+      "importPath" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/src/ThermoKit/AVUtils.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/src/ThermoKit/Debug.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/src/ThermoKit/Hotspot.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/src/ThermoKit/OverlayColor.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/src/ThermoKit/ThermalGPU.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/src/ThermoKit/ThermoKit.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "ThermoKit",
+      "moduleOutputPath" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/Modules/ThermoKit.swiftmodule",
+      "objects" : [
+        "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/AVUtils.swift.o",
+        "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/Debug.swift.o",
+        "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/Hotspot.swift.o",
+        "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/OverlayColor.swift.o",
+        "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/ThermalGPU.swift.o",
+        "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/ThermoKit.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx12.0",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-Onone",
+        "-enable-testing",
+        "-j16",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-emit-objc-header",
+        "-emit-objc-header-path",
+        "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/include/ThermoKit-Swift.h",
+        "-swift-version",
+        "6",
+        "-O",
+        "-Xfrontend",
+        "-experimental-lazy-typecheck",
+        "-Xfrontend",
+        "-experimental-skip-all-function-bodies",
+        "-Xfrontend",
+        "-experimental-allow-module-with-compiler-errors",
+        "-Xfrontend",
+        "-empty-abi-descriptor",
+        "-plugin-path",
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+        "-I",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "thermovision_video_api"
+      ],
+      "outputFileMapPath" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/Modules/ThermoKit.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : true,
+      "sources" : [
+        "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/src/ThermoKit/AVUtils.swift",
+        "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/src/ThermoKit/Debug.swift",
+        "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/src/ThermoKit/Hotspot.swift",
+        "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/src/ThermoKit/OverlayColor.swift",
+        "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/src/ThermoKit/ThermalGPU.swift",
+        "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/src/ThermoKit/ThermoKit.swift"
+      ],
+      "tempsPath" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build",
+      "wholeModuleOptimization" : false
+    }
+  },
+  "swiftFrontendCommands" : {
+
+  },
+  "swiftTargetScanArgs" : {
+    "ThermalHeatmapMain" : [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "-module-name",
+      "ThermalHeatmapMain",
+      "-package-name",
+      "thermovision_video_api",
+      "-c",
+      "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/src/ThermalHeatmapMain/main.swift",
+      "-I",
+      "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/Modules",
+      "-target",
+      "arm64-apple-macosx12.0",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-Onone",
+      "-enable-testing",
+      "-j16",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-Xfrontend",
+      "-entry-point-function-name",
+      "-Xfrontend",
+      "ThermalHeatmapMain_main",
+      "-parse-as-library",
+      "-swift-version",
+      "6",
+      "-Xfrontend",
+      "-experimental-lazy-typecheck",
+      "-Xfrontend",
+      "-experimental-skip-all-function-bodies",
+      "-Xfrontend",
+      "-experimental-allow-module-with-compiler-errors",
+      "-Xfrontend",
+      "-empty-abi-descriptor",
+      "-plugin-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+      "-I",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-L",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "thermovision_video_api",
+      "-driver-use-frontend-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    ],
+    "ThermalVideoMain" : [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "-module-name",
+      "ThermalVideoMain",
+      "-package-name",
+      "thermovision_video_api",
+      "-c",
+      "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/src/ThermalVideoMain/main.swift",
+      "-I",
+      "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/Modules",
+      "-target",
+      "arm64-apple-macosx12.0",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-Onone",
+      "-enable-testing",
+      "-j16",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-Xfrontend",
+      "-entry-point-function-name",
+      "-Xfrontend",
+      "ThermalVideoMain_main",
+      "-swift-version",
+      "6",
+      "-Xfrontend",
+      "-experimental-lazy-typecheck",
+      "-Xfrontend",
+      "-experimental-skip-all-function-bodies",
+      "-Xfrontend",
+      "-experimental-allow-module-with-compiler-errors",
+      "-Xfrontend",
+      "-empty-abi-descriptor",
+      "-plugin-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+      "-I",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-L",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "thermovision_video_api",
+      "-driver-use-frontend-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    ],
+    "ThermoKit" : [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "-module-name",
+      "ThermoKit",
+      "-package-name",
+      "thermovision_video_api",
+      "-c",
+      "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/src/ThermoKit/AVUtils.swift",
+      "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/src/ThermoKit/Debug.swift",
+      "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/src/ThermoKit/Hotspot.swift",
+      "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/src/ThermoKit/OverlayColor.swift",
+      "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/src/ThermoKit/ThermalGPU.swift",
+      "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/src/ThermoKit/ThermoKit.swift",
+      "-I",
+      "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/Modules",
+      "-target",
+      "arm64-apple-macosx12.0",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-Onone",
+      "-enable-testing",
+      "-j16",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-emit-objc-header",
+      "-emit-objc-header-path",
+      "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/include/ThermoKit-Swift.h",
+      "-swift-version",
+      "6",
+      "-O",
+      "-Xfrontend",
+      "-experimental-lazy-typecheck",
+      "-Xfrontend",
+      "-experimental-skip-all-function-bodies",
+      "-Xfrontend",
+      "-experimental-allow-module-with-compiler-errors",
+      "-Xfrontend",
+      "-empty-abi-descriptor",
+      "-plugin-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+      "-I",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-L",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "thermovision_video_api",
+      "-driver-use-frontend-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    ]
+  },
+  "targetDependencyMap" : {
+    "ThermalHeatmapMain" : [
+      "ThermoKit"
+    ],
+    "ThermalVideoMain" : [
+      "ThermoKit"
+    ],
+    "ThermoKit" : [
+
+    ]
+  },
+  "testDiscoveryCommands" : {
+
+  },
+  "testEntryPointCommands" : {
+
+  },
+  "traitConfiguration" : {
+    "default" : {
+
+    }
+  },
+  "writeCommands" : {
+    "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermalHeatmapMain.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/src/ThermalHeatmapMain/main.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermalHeatmapMain.build/sources"
+    },
+    "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermalVideoMain.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/src/ThermalVideoMain/main.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermalVideoMain.build/sources"
+    },
+    "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/src/ThermoKit/AVUtils.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/src/ThermoKit/Debug.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/src/ThermoKit/Hotspot.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/src/ThermoKit/OverlayColor.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/src/ThermoKit/ThermalGPU.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/src/ThermoKit/ThermoKit.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/sources"
+    },
+    "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt" : {
+      "alwaysOutOfDate" : true,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<swift-get-version>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+        }
+      ],
+      "outputFilePath" : "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+    }
+  }
+}

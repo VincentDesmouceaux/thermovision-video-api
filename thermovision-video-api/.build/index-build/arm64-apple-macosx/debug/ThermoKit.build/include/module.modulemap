@@ -1,0 +1,3 @@
+module ThermoKit {
+    header "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermoKit.build/include/ThermoKit-Swift.h"
+}

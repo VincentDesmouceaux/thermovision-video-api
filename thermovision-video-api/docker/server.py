@@ -1,60 +1,83 @@
-import os
-import io
 import base64
-import pathlib
+import binascii
+import io
 import logging
+import os
+import pathlib
 import shlex
+from typing import Optional
 
-from flask import Flask, request, jsonify
 import paramiko
+from flask import Flask, jsonify, request
+from werkzeug.utils import secure_filename
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-app = Flask(__name__, static_folder="static", static_url_path="")
+app = Flask(__name__, static_folder="/app/static", static_url_path="")
+
+MAC_HOST = os.environ.get("MAC_HOST")
+MAC_PORT = int(os.environ.get("MAC_PORT", "22"))
+MAC_USER = os.environ.get("MAC_USER")
+MAC_SSH_KEY_BASE64 = os.environ.get("MAC_SSH_KEY_BASE64")
+REMOTE_WORKDIR = os.environ.get("REMOTE_WORKDIR", "/tmp/thermo_uploads")
+POST_PROCESS_CMD = os.environ.get(
+    "POST_PROCESS_CMD", 'echo processing "{path}"')
 
 
-def get_required_env(name: str) -> str:
-    value = os.getenv(name)
-    if not value:
-        raise RuntimeError(f"{name} is missing")
-    return value
+def config_missing() -> list[str]:
+    missing: list[str] = []
+    if not MAC_HOST:
+        missing.append("MAC_HOST")
+    if not MAC_USER:
+        missing.append("MAC_USER")
+    if not MAC_SSH_KEY_BASE64:
+        missing.append("MAC_SSH_KEY_BASE64")
+    return missing
 
 
-# Required environment variables
-MAC_HOST = get_required_env("MAC_HOST")
-MAC_PORT = int(os.getenv("MAC_PORT", "22"))
-MAC_USER = get_required_env("MAC_USER")
-MAC_SSH_KEY_BASE64 = get_required_env("MAC_SSH_KEY_BASE64")
+def load_ssh_key_from_base64(b64: Optional[str]) -> paramiko.PKey:
+    if not b64:
+        raise RuntimeError("MAC_SSH_KEY_BASE64 not set")
 
-REMOTE_WORKDIR = os.getenv("REMOTE_WORKDIR", "/tmp/thermo_uploads")
-POST_PROCESS_CMD = os.getenv("POST_PROCESS_CMD", "echo processing {path}")
+    normalized = "".join(b64.strip().split())
 
+    try:
+        key_bytes = base64.b64decode(normalized, validate=True)
+    except (binascii.Error, ValueError) as exc:
+        raise RuntimeError(
+            "MAC_SSH_KEY_BASE64 is not valid base64. Put only the base64 string, without quotes or extra text."
+        ) from exc
 
-def load_ssh_key_from_base64(b64: str) -> paramiko.PKey:
-    key_bytes = base64.b64decode(b64)
     key_str = key_bytes.decode("utf-8")
-    key_stream = io.StringIO(key_str)
 
-    # Essaie plusieurs formats de clé
-    for key_cls in (paramiko.RSAKey, paramiko.Ed25519Key, paramiko.ECDSAKey):
-        key_stream.seek(0)
+    parsers = (
+        paramiko.Ed25519Key.from_private_key,
+        paramiko.RSAKey.from_private_key,
+        paramiko.ECDSAKey.from_private_key,
+    )
+    last_error: Optional[Exception] = None
+
+    for parser in parsers:
+        stream = io.StringIO(key_str)
         try:
-            return key_cls.from_private_key(key_stream)
-        except Exception:
-            continue
+            return parser(stream)
+        except Exception as exc:
+            last_error = exc
 
-    raise RuntimeError("Failed to parse private key")
+    raise RuntimeError(f"Failed to parse SSH private key: {last_error}")
 
 
 def sftp_and_exec(local_path: str, filename: str) -> dict:
+    missing = config_missing()
+    if missing:
+        raise RuntimeError(
+            "Missing required environment variables: " + ", ".join(missing))
+
     priv_key = load_ssh_key_from_base64(MAC_SSH_KEY_BASE64)
 
     ssh = paramiko.SSHClient()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-
-    logger.info("Connecting to macOS host %s:%s as %s",
-                MAC_HOST, MAC_PORT, MAC_USER)
     ssh.connect(
         hostname=MAC_HOST,
         port=MAC_PORT,
@@ -65,31 +88,27 @@ def sftp_and_exec(local_path: str, filename: str) -> dict:
 
     sftp = ssh.open_sftp()
     try:
-        # Crée le dossier distant
-        mkdir_cmd = f"mkdir -p {shlex.quote(REMOTE_WORKDIR)}"
-        stdin, stdout, stderr = ssh.exec_command(mkdir_cmd)
-        _ = stdout.read()
-        mkdir_err = stderr.read().decode("utf-8", errors="ignore").strip()
-        if mkdir_err:
-            logger.warning("Remote mkdir stderr: %s", mkdir_err)
+        remote_dir_cmd = f"mkdir -p {shlex.quote(REMOTE_WORKDIR)}"
+        stdin, stdout, stderr = ssh.exec_command(remote_dir_cmd)
+        mkdir_exit = stdout.channel.recv_exit_status()
+        mkdir_err = stderr.read().decode("utf-8", errors="ignore")
+        if mkdir_exit != 0:
+            raise RuntimeError(
+                f"Failed to prepare remote directory: {mkdir_err or 'unknown error'}")
 
-        safe_filename = pathlib.Path(filename).name
-        remote_path = f"{REMOTE_WORKDIR.rstrip('/')}/{safe_filename}"
-
-        logger.info("Uploading %s -> %s", local_path, remote_path)
+        remote_path = f"{REMOTE_WORKDIR.rstrip('/')}/{filename}"
         sftp.put(local_path, remote_path)
 
         cmd = POST_PROCESS_CMD.replace("{path}", shlex.quote(remote_path))
-        logger.info("Executing remote command: %s", cmd)
-
         stdin, stdout, stderr = ssh.exec_command(cmd)
-        exit_status = stdout.channel.recv_exit_status()
+        exit_code = stdout.channel.recv_exit_status()
         out = stdout.read().decode("utf-8", errors="ignore")
         err = stderr.read().decode("utf-8", errors="ignore")
 
         return {
             "remote_path": remote_path,
-            "exit_status": exit_status,
+            "command": cmd,
+            "exit_code": exit_code,
             "stdout": out,
             "stderr": err,
         }
@@ -102,8 +121,14 @@ def sftp_and_exec(local_path: str, filename: str) -> dict:
 
 
 @app.route("/health", methods=["GET"])
+@app.route("/api/health", methods=["GET"])
 def health():
-    return jsonify({"ok": True, "status": "ok"}), 200
+    missing = config_missing()
+    return jsonify({
+        "ok": len(missing) == 0,
+        "service": "thermo-upload-forwarder",
+        "missing": missing,
+    }), 200
 
 
 @app.route("/", methods=["GET"])
@@ -112,35 +137,33 @@ def index():
 
 
 @app.route("/upload", methods=["POST"])
+@app.route("/api/upload", methods=["POST"])
 def upload():
-    if "file" not in request.files:
-        return jsonify({"error": "file field required"}), 400
+    if "file" in request.files:
+        uploaded = request.files["file"]
+    elif "video" in request.files:
+        uploaded = request.files["video"]
+    else:
+        return jsonify({"error": "file field required (use 'file' or 'video')"}), 400
 
-    f = request.files["file"]
-    filename = f.filename or "upload.bin"
+    if uploaded.filename is None or uploaded.filename.strip() == "":
+        return jsonify({"error": "empty filename"}), 400
 
+    safe_filename = secure_filename(uploaded.filename) or "upload.bin"
     tmpdir = pathlib.Path("/tmp/uploads")
     tmpdir.mkdir(parents=True, exist_ok=True)
-
-    safe_filename = pathlib.Path(filename).name
     local_path = str(tmpdir / safe_filename)
-
-    try:
-        f.save(local_path)
-    except Exception as e:
-        logger.exception("failed to save upload")
-        return jsonify({"error": f"failed to save upload: {e}"}), 500
+    uploaded.save(local_path)
 
     try:
         result = sftp_and_exec(local_path, safe_filename)
-    except Exception as e:
+    except Exception as exc:
         logger.exception("sftp/exec failed")
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"error": str(exc)}), 500
 
-    status_code = 200 if result["exit_status"] == 0 else 500
-    return jsonify({"status": "ok" if result["exit_status"] == 0 else "error", **result}), status_code
+    return jsonify({"status": "ok", **result}), 200
 
 
 if __name__ == "__main__":
-    port = int(os.getenv("PORT", "8080"))
-    app.run(host="0.0.0.0", port=port)
+    app.run(host="0.0.0.0", port=int(
+        os.environ.get("PORT", "8080")), debug=False)

@@ -1,0 +1,12 @@
+{
+  "": {
+    "swift-dependencies": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermalVideoMain.build/master.swiftdeps"
+  },
+  "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/src/ThermalVideoMain/main.swift": {
+    "dependencies": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermalVideoMain.build/main.d",
+    "object": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermalVideoMain.build/main.swift.o",
+    "swiftmodule": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermalVideoMain.build/main~partial.swiftmodule",
+    "swift-dependencies": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermalVideoMain.build/main.swiftdeps",
+    "diagnostics": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermalVideoMain.build/main.dia"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "": {
+    "swift-dependencies": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermalHeatmapMain.build/master.swiftdeps"
+  },
+  "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/src/ThermalHeatmapMain/main.swift": {
+    "dependencies": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermalHeatmapMain.build/main.d",
+    "object": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermalHeatmapMain.build/main.swift.o",
+    "swiftmodule": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermalHeatmapMain.build/main~partial.swiftmodule",
+    "swift-dependencies": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermalHeatmapMain.build/main.swiftdeps",
+    "diagnostics": "/Users/vincentdesmouceaux/dev/thermovision-video-api/thermovision-video-api/.build/index-build/arm64-apple-macosx/debug/ThermalHeatmapMain.build/main.dia"
+  }
+}

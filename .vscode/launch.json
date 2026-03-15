@@ -1,0 +1,44 @@
+{
+    "configurations": [
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:thermovision-video-api}/thermovision-video-api",
+            "name": "Debug ThermalHeatmap (thermovision-video-api)",
+            "target": "ThermalHeatmap",
+            "configuration": "debug",
+            "preLaunchTask": "swift: Build Debug ThermalHeatmap (thermovision-video-api)"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:thermovision-video-api}/thermovision-video-api",
+            "name": "Release ThermalHeatmap (thermovision-video-api)",
+            "target": "ThermalHeatmap",
+            "configuration": "release",
+            "preLaunchTask": "swift: Build Release ThermalHeatmap (thermovision-video-api)"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:thermovision-video-api}/thermovision-video-api",
+            "name": "Debug ThermalVideo (thermovision-video-api)",
+            "target": "ThermalVideo",
+            "configuration": "debug",
+            "preLaunchTask": "swift: Build Debug ThermalVideo (thermovision-video-api)"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:thermovision-video-api}/thermovision-video-api",
+            "name": "Release ThermalVideo (thermovision-video-api)",
+            "target": "ThermalVideo",
+            "configuration": "release",
+            "preLaunchTask": "swift: Build Release ThermalVideo (thermovision-video-api)"
+        }
+    ]
+}

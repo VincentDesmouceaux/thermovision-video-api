@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VideoDeepProbe")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1b341d63f49f9ce6ba72a27c3c2fa4ca080bf42e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b043b93f3a2b6001fffbf4e4b45907a93461d18f")]
 [assembly: System.Reflection.AssemblyProductAttribute("VideoDeepProbe")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VideoDeepProbe")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
