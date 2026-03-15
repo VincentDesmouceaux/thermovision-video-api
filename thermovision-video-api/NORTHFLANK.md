@@ -14,7 +14,7 @@ Environment variables (set as secrets in Northflank)
 - `REMOTE_WORKDIR`: directory on macOS where uploads will be placed (default `/tmp/thermo_uploads`)
 - `POST_PROCESS_CMD`: command to run on macOS after the upload; use `{path}` to inject the uploaded file path. Example:
 
-  POST_PROCESS_CMD="/usr/local/bin/ThermalHeatmap -i {path} -o {path}.heatmap.png && echo done"
+  POST_PROCESS_CMD="/usr/local/bin/ThermalHeatmap {path} {path}.png && echo done"
 
 Build & deploy (Northflank)
 1. Build and push image to your container registry (Northflank can build from repo or you can push to DockerHub/Harbor):
@@ -47,7 +47,7 @@ On your macOS target, prepare a wrapper script in `REMOTE_WORKDIR` or ensure `PO
 INPUT="$1"
 OUTDIR="$HOME/thermo_results"
 mkdir -p "$OUTDIR"
-/usr/local/bin/ThermalHeatmap -i "$INPUT" -o "$OUTDIR/$(basename "$INPUT").heatmap.png"
+/usr/local/bin/ThermalHeatmap "$INPUT" "$OUTDIR/$(basename "$INPUT").png"
 echo "done"
 ```
 
