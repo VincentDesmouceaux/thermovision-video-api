@@ -7,12 +7,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 WORKDIR /app
 
-COPY docker/requirements.txt /app/requirements.txt
+COPY requirements.txt /app/requirements.txt
 RUN python -m pip install --no-cache-dir --upgrade "pip<26" "setuptools<82" wheel \
     && python -m pip install --no-cache-dir -r /app/requirements.txt
 
 COPY docker/server.py /app/server.py
-COPY static /app/static
+COPY docker/static /app/static
 
 ENV PYTHONUNBUFFERED=1
 ENV PORT=8080

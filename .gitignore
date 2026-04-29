@@ -1,0 +1,28 @@
+
+# Local build artifacts
+**/.build/
+**/obj/
+**/bin/
+
+# Python
+**/__pycache__/
+**/*.pyc
+.venv/
+venv/
+env/
+
+# macOS / IDE
+.DS_Store
+.idea/
+.vscode/
+
+# Env files
+.env
+*.env
+
+# Generated videos / outputs
+*.mp4
+*.mov
+*.avi
+outputs/
+tmp/
