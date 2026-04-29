@@ -1,13 +1,5 @@
-Colle ce README à la racine du repo :
+https://tinyurl.com/7djxm9ux
 
-```bash
-cd ~/dev/thermovision-video-api
-nano README.md
-```
-
-Puis remplace le contenu par ceci :
-
-````markdown
 # ThermoVision Video API
 
 **ThermoVision** is a Python/OpenCV video processing API with a lightweight web interface for generating pseudo-thermal heatmaps, detecting hotspots, and downloading processed video clips.
